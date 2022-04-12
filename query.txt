@@ -1,0 +1,33 @@
+query getCourseByTitle($title: String!){
+  coursesByTitle(title: $title){
+    ...courseFields
+  }
+}
+
+{"title": "Node"}
+
+
+mutation addNewCourse($id:Int!, $title: String!, $author: String!, $description: String!, $topic: String!, $url: String!) {
+  addCourse(id: $id, title: $title, author: $author, description:$description, topic: $topic, url: $url){
+    ...courseFields
+  }
+}
+
+{
+    "id": 5, 
+    "title": "New Course",
+    "author": "John",
+    "description":"New course description",
+    "topic": "new topic",
+    "url": "www.url.com"
+}
+
+fragment courseFields on Course {
+  id,
+  title
+  author
+  description
+  topic
+  url
+}
+
